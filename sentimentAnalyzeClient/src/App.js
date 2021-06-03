@@ -53,6 +53,10 @@ class App extends React.Component {
         ret = axios.get(url);
         ret.then((response) => {
 
+            if(response.data.status > 200) {
+                this.setState({ sentimentOutput: response.data.message })
+                return;
+            }
             //Include code here to check the sentiment and fomrat the data accordingly
 
             this.setState({ sentimentOutput: response.data });
@@ -81,6 +85,10 @@ class App extends React.Component {
         ret = axios.get(url);
 
         ret.then((response) => {
+            if (response.data.status > 200) {
+                this.setState({ sentimentOutput: response.data.message })
+                return;
+            }
             this.setState({ sentimentOutput: <EmotionTable emotions={response.data} /> });
         });
     }

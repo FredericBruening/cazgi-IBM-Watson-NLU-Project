@@ -83,7 +83,6 @@ app.get("/text/sentiment", (req, res) => {
     }).then(response => {
         return res.send(response.result.sentiment.document.label)
     }).catch(err => {
-        console.log(err);
         return res.send(err);
     });;
 });
